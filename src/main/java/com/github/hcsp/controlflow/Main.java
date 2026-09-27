@@ -15,5 +15,28 @@ public class Main {
      * @param n 给定的数字
      * @return 1到n之间(不包括n)质数的个数
      */
-    public static int howManyPrimeNumbers(int n) {}
+    public static int howManyPrimeNumbers(int n) {
+        int count = 0;
+        for (int num = 2; num < n; num++) {
+            if (isPrime(num)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // 判断一个数是不是素数
+    private static boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+        // 修复：取平方根整数部分，不再用浮点数+1
+        int sqrt = (int) Math.sqrt(num);
+        for (int i = 2; i <= sqrt; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
